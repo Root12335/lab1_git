@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calm Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Manrope:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: linear-gradient(135deg, #0f172a 0%, #12233e 50%, #103d4a 100%);
+        --card: rgba(255, 255, 255, 0.08);
+        --accent: #ffb347;
+        --accent-2: #5eead4;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Manrope", system-ui, -apple-system, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 20px;
+      }
+
+      .page {
+        width: min(1100px, 100%);
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(6px);
+      }
+
+      .logo {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 0.5px;
+      }
+
+      nav {
+        display: flex;
+        gap: 16px;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        transition: color 160ms ease, background 160ms ease;
+      }
+
+      nav a:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        padding: 48px 32px 42px;
+      }
+
+      .hero-text h1 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: clamp(32px, 4vw, 46px);
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+
+      .hero-text p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        max-width: 520px;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-2) 100%
+        );
+        color: #0f172a;
+        border: none;
+        border-radius: 14px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+
+      .badge span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 0 6px rgba(94, 234, 212, 0.15);
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 22px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          120% 120% at 20% 20%,
+          rgba(255, 255, 255, 0.08),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .hero-card h3 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .hero-card p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 420px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        padding: 0 32px 36px;
+      }
+
+      .feature {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 18px;
+        display: grid;
+        gap: 8px;
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .feature .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .feature p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      footer {
+        padding: 18px 32px 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @media (max-width: 640px) {
+        header,
+        .hero,
+        .features,
+        footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+
+        nav {
+          width: 100%;
+          flex-wrap: wrap;
+        }
+
+        .cta {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div class="logo">Flowline Studio</div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero" id="about">
+        <div class="hero-text">
+          <div class="badge"><span></span>Thoughtful digital presence</div>
+          <h1>Calm, clear websites for modern teams.</h1>
+          <p>
+            We design lean, fast, and intentional web experiences. No clutter,
+            just the right words, bold typography, and a touch of motion to
+            guide your visitors.
+          </p>
+          <button class="cta" aria-label="Book a consultation">
+            Book a consultation
+          </button>
+        </div>
+        <div class="hero-card">
+          <h3>What we deliver</h3>
+          <p>
+            Landing pages that feel focused, product sections that tell a story,
+            and style systems you can grow with. Built with accessibility,
+            speed, and clarity in mind.
+          </p>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <article class="feature">
+          <div class="pill">Fast load</div>
+          <p>
+            Lightweight builds, optimized assets, and responsible animation so
+            your site feels instant on any device.
+          </p>
+        </article>
+        <article class="feature">
+          <div class="pill">Accessible</div>
+          <p>
+            Readable contrast, logical hierarchy, and keyboard-friendly
+            navigation baked in from the first draft.
+          </p>
+        </article>
+        <article class="feature">
+          <div class="pill">Intentional</div>
+          <p>
+            Layouts that highlight your story, with crisp typography and
+            balanced spacing that keep focus on what matters.
+          </p>
+        </article>
+        <article class="feature">
+          <div class="pill">Adaptable</div>
+          <p>
+            Responsive grids and component patterns that scale gracefully from
+            phone to desktop without breaking the flow.
+          </p>
+        </article>
+      </section>
+
+      <footer id="contact">
+        <span>Built with care in 2026</span>
+        <span>hello@flowline.studio</span>
+      </footer>
+    </main>
+  </body>
+</html>
